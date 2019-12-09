@@ -11,75 +11,43 @@ public class App
 	       
 	       Scanner input=new Scanner(System.in);
 	       List<Kisi> kisiList=new ArrayList();
-	           
+	       Islemler islem=new Islemler();
 	       
 	       while(true) {  
-	    	   System.out.println("Ýþlem Seciniz");
+	    	   System.out.println("Islem Seciniz");
 	    	   
-	    	   System.out.println("1.Kayýt");
+	    	   System.out.println("1.KayÄ±t");
 	    	   System.out.println("2.Silme");
 	    	   System.out.println("3.Listele");
 	    	   System.out.println("4.Arama");
-	    	   System.out.println("5.Çýkýþ");
+	    	   System.out.println("5.Ã‡Ä±kÄ±ÅŸ");
 	           
 	           int yanit=input.nextInt();
 	          
 	           Scanner scanner=new Scanner(System.in);
 	            if(yanit==1) {
-	               kayitVerileriAlmaEkleme(scanner,kisiList);
+					islem.kayitVerileriAlmaEkleme(scanner,kisiList);
 	           }
 	            else if(yanit==2) {
-	            	listele(kisiList);
+					islem.listele(kisiList);
 	            	int id=scanner.nextInt();
-	            	sil(id,kisiList);
+					islem.sil(id,kisiList);
 	            }
 	            else if(yanit==3) {
-	            	listele(kisiList);
+					islem.listele(kisiList);
 	            }
 	            else if(yanit==4) {
 	            	String aranan=scanner.nextLine();
-	            	arama(aranan,kisiList);
+					islem.arama(aranan,kisiList);
 	            }
 	            else if(yanit==5) {
+	            	System.exit(0);
 	            	break;
 	            }
 	           
 	       }
 	}
 
-	public static void kayitVerileriAlmaEkleme( Scanner input, List<Kisi> kisiList) {
-	
-		
-		   System.out.println("Ýsim");
-		   String ad=input.nextLine();
-		   System.out.println("Soyad");
-		   String soyad=input.nextLine();
-		   System.out.println("Telefon");
-		   int telefon=input.nextInt();
-		   Kisi kisi=new Kisi(ad,soyad,telefon);
-		   kisiList.add(kisi);
-	}
-	
-	public static void listele(List<Kisi> kisiList) {
-		 for(Kisi arr:kisiList) {
-			 System.out.println(arr.getAd() + arr.getId());
-		 }
-	}
-	
-	public static void sil(int id,List<Kisi> kisiList) {
-		for(Kisi arr:kisiList) {
-			if(arr.getId()==id) {
-				kisiList.remove(arr);
-				break;//çýkýþ yapýlmasý lazým
-			}
-		 }
-	}
-	public static void arama(String ad,List<Kisi> kisiList) {
-		for(Kisi arr:kisiList) {
-			if(arr.getAd().equals(ad)) {
-				System.out.println(ad);
-			}
-		 }
-	}
+
 	
 }
